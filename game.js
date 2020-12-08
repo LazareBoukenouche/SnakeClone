@@ -1,4 +1,3 @@
-
 // Declaration of the constantes of the game
 const TOP = 0;
 const LEFT = 0;
@@ -23,24 +22,25 @@ let timeInterval = 30
 let startingCount = 1;
 
 // Create the canvas window, where the game will be played.
-let canvas = document.getElementById('canvas');  
+let canvas = document.getElementById('canvas');
+
 let context = canvas.getContext('2d');    
 let applePosX = Math.floor((Math.random() * canvas.height) + 40);
 let applePosY = Math.floor((Math.random() * canvas.width) + 40);
-  
+
 // Create the segments of the body snake, with 20 pixels of separation for each one
 let snake = [
     {x: 150, y: 150},
     {x: 130, y: 150},
     {x: 110, y: 150},
     ];
-    
-function menu() {
-    setColors(BLACK,WHITE);
-    drawRect(LEFT,TOP,canvas.width,canvas.height);
-    drawRect(canvas.width/4, canvas.height/5, 350,200);
-    write('Click','for starting Snake');
-}
+document.querySelectorAll('.play')[0].addEventListener('click', function() {
+    if (startingCount != 0) {
+        main();
+        document.querySelector("#main").style.display = 'none';
+        }
+});
+
 
 // Function used for writing messages on the screen menu
 function write(text1,text2) {
@@ -114,7 +114,7 @@ function drawSnakeSegments(segments) {
     // Do the coloring every 20 pixels
     drawRect(segments.x, segments.y, snakeWidth, snakeHeight)
     }
-        
+
 function drawSnakeFullBody() {
     snake.forEach(drawSnakeSegments);
     };       
@@ -189,8 +189,8 @@ function move() {
 
 function pausingTheGame(){
     if (HORIZONTAL_SPEED != 0 && VERTICAL_SPEED === 0 || HORIZONTAL_SPEED === 0 && VERTICAL_SPEED != 0){
-    HORIZONTAL_SPEED = 0;
-    VERTICAL_SPEED = 0;
+        HORIZONTAL_SPEED = 0;
+        VERTICAL_SPEED = 0;
     }
 }	
 
@@ -223,6 +223,7 @@ document.getElementById("canvas").addEventListener("click", function( event ) {
   
 // Creating keyboard events with the Char codes of the keyboard
 document.onkeydown = function(e) {
+    e.preventDefault();
     switch (e.keyCode) {
     // Keyboard keys for starting, speeding up and slowing the game
     
@@ -236,7 +237,7 @@ document.onkeydown = function(e) {
             break;
         // Pressing L will speed the game
         case 76:
-            timeInterval -= 10;
+            document.querySelector("#main").style.display = 'flex';
             break;
         // Pressing S will slow the game
         case 83:
@@ -277,11 +278,6 @@ document.onkeydown = function(e) {
             break;
     }
 };
-
-
-
-// Main game loop
-menu()
 
 
 

@@ -1,0 +1,125 @@
+:root {
+    --primary-color:#4eb1ba;
+}
+@media screen and (min-width: 350px) {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .wrapper {
+        height: 100vh;
+        width: 100vw;
+        padding: 0;
+        margin: 0;
+    }
+    .wrapper > a {
+        width: 60%;
+        height: 15%;
+        margin-left: 20%;
+        margin-top: 2%;
+        font-size: 3rem;
+        text-align: center;
+    }
+    #menu,.wrapper-canvas,#main {
+        min-width: 100%;
+        min-height: 100%;
+    }
+
+    #main {
+        display: block;
+        /* flex-direction: column; */
+        overflow: auto;
+        position: absolute;
+    }
+
+    #canvas {
+        margin: 5%;
+        display: none;
+        border:1px solid black;
+        /* position: absolute; */
+        width: 90%;
+        /* z-index: 2;
+        pointer-events: none; */
+    }
+
+    .controls {
+        margin-left: 5%;
+        width: 90%;
+        margin-top: 20vh;
+        min-height: 45vh;
+        /* margin-top: 55%; */
+        display: none;
+        border:1px solid black;
+        z-index: 99;
+        grid-template-areas: 
+            ". arrowUp . "
+            "arrowLeft . arrowRight"
+            ". arrowDown .";
+        }
+
+        .arrowUp {
+            grid-area: arrowUp;
+        }
+        .arrowLeft {
+            grid-area: arrowLeft;
+        }  
+        .arrowDown {
+            grid-area: arrowDown;
+        }
+        .arrowRight {
+            grid-area: arrowRight;
+        }
+
+    .controls div {
+        background-color:rgba(78,177,186,0.5);
+        /* margin: 10%;
+        padding: 1%;
+        width: 50%;
+        border-radius: 50%; */
+        
+    }
+    .controls div p {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        color: white;
+        text-transform: uppercase;
+    }
+
+
+    
+    
+    #main ul {
+        height: 100%;
+        width: 95%;
+        margin: 2.5%;
+        padding: 0;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    #main ul li {
+        list-style-type: none;
+        /* margin: 15%;  */
+    }
+
+    #main ul li a ,#main ul li button{
+        min-width:100%;
+        min-height: 100%;
+        font-size: 3rem;
+        margin: auto;
+    }
+
+    #main ul.games-links {
+        display:flex;  
+    }
+
+    #main ul.games-links li a {
+        width:5%;
+    }
+}
+/* @media screen and (min-width: 1224px) { 
+
+} */

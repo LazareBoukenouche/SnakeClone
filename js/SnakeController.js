@@ -36,7 +36,7 @@ class SnakeController {
                 break;
         }
         if(element) {
-            element.addEventListener("touchStart",snakeMethod,false);
+            element.addEventListener("touchstart",snakeMethod,false);
             
         }
         

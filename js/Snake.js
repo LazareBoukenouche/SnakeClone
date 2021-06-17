@@ -27,15 +27,19 @@ class Snake {
         this.drawBodyParts = this.drawBodyParts.bind(this);
         this.snakeController = new SnakeController();
 
-        this.snakeController.bindControl(snakeInput.arrowLeft, this.goLeft);
-        this.snakeController.bindControl(snakeInput.arrowUp, this.goUp);
-        this.snakeController.bindControl(snakeInput.arrowRight, this.goRight);
-        this.snakeController.bindControl(snakeInput.arrowDown, this.goDown);
-
         this.goLeft = this.goLeft.bind(this);
         this.goUp = this.goUp.bind(this);
         this.goRight = this.goRight.bind(this);
         this.goDown = this.goDown.bind(this);
+        this.updateMovement = this.updateMovement.bind(this);
+
+        this.snakeController.bindControl(snakeInput.arrowLeft, this.goLeft);
+        this.snakeController.bindControl(snakeInput.arrowUp, this.goUp);
+        this.snakeController.bindControl(snakeInput.arrowRight, this.goRight);
+        this.snakeController.bindControl(snakeInput.arrowDown, this.goDown);
+        
+
+        
     }
 
     // define the getters and setters
@@ -127,13 +131,13 @@ class Snake {
                 this.move(-10,0);
                 break;
             case snakeOrientation.up:
-                this.move(0,10);
+                this.move(0,-10);
                 break;
             case snakeOrientation.right:
                 this.move(10,0);
                 break;
             case snakeOrientation.down:
-                this.move(0,-10);
+                this.move(0,10);
                 break;
         }
         // if (snake.orientation === "left") {
@@ -151,23 +155,19 @@ class Snake {
     }
 
     goLeft() {
-        let that = this;
-        that.orientation = snakeOrientation.left;
+        this.orientation = snakeOrientation.left;
         console.log("goleft");
     }
     goUp() {
-        let that = this;
-        that.orientation = snakeOrientation.up;
+        this.orientation = snakeOrientation.up;
         console.log("goUp");
     }
     goRight() {
-        let that = this;
-        that.orientation = snakeOrientation.right;
+        this.orientation = snakeOrientation.right;
         console.log("golright");
     }
     goDown() {
-        let that = this;
-        that.orientation = snakeOrientation.down;
+        this.orientation = snakeOrientation.down;
         console.log("goDown");
     }
 

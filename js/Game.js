@@ -44,7 +44,9 @@ class Game {
         self.clearWindow();
         setTimeout(function onTick(time) {
             snake.updateMovement();
-            console.log(snake.getOrientation());
+            if (snake.getOrientation() != 0) {
+                console.log(snake.getOrientation());
+            }
             snake.drawSnakeFullBody();
             // Call ongoing again
             self.ongoing();

@@ -12,7 +12,7 @@ class SnakeGame {
         this.menuStartButton = document.querySelector('.play');
         this.startingCount = 1;
 
-        this.game = new Game(gameState.starting,45);
+        this.game = new Game(gameState.starting,200);
         // this.snake = new Snake(canvas.width/2,canvas.height/2,10,10,10,10,"left","#000000","#00FF00",3);
 
         //binding this to the method of the class

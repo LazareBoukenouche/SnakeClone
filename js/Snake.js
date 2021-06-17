@@ -32,6 +32,7 @@ class Snake {
         this.goRight = this.goRight.bind(this);
         this.goDown = this.goDown.bind(this);
         this.updateMovement = this.updateMovement.bind(this);
+        this.move = this.move.bind(this);
 
         this.snakeController.bindControl(snakeInput.arrowLeft, this.goLeft);
         this.snakeController.bindControl(snakeInput.arrowUp, this.goUp);
@@ -112,7 +113,7 @@ class Snake {
         // The unshift() method adds one or more elements to the beginning 
         // of an array and 
         // returns the new length of the array.
-        let head = {x:this.getBody()[0].x + xSpeed, y:this.getBody()[0].y 
+        const head = {x:this.getBody()[0].x + xSpeed, y:this.getBody()[0].y 
         + ySpeed};
         this.getBody().unshift(head);
         // The pop() method removes the last element from an array and 
@@ -155,20 +156,25 @@ class Snake {
     }
 
     goLeft() {
-        this.orientation = snakeOrientation.left;
-        console.log("goleft");
+        if (this.orientation != snakeOrientation.right ) {
+            this.orientation = snakeOrientation.left;
+        }
     }
+
     goUp() {
-        this.orientation = snakeOrientation.up;
-        console.log("goUp");
+        if (this.orientation != snakeOrientation.down ) {
+            this.orientation = snakeOrientation.up;
+        }
     }
     goRight() {
-        this.orientation = snakeOrientation.right;
-        console.log("golright");
+        if (this.orientation != snakeOrientation.left ) {
+            this.orientation = snakeOrientation.right;
+        }
     }
     goDown() {
-        this.orientation = snakeOrientation.down;
-        console.log("goDown");
+        if (this.orientation != snakeOrientation.up ) {
+            this.orientation = snakeOrientation.down;
+        }
     }
 
 }
@@ -185,28 +191,3 @@ class Snake {
     //         clearCanvas(snake[0].x,snake[snake.length -1].y - 20,snakeWidth,snakeHeight);
     //     }
     // };
-
-    
-
-    // function changeDirectionX(hSpeed,vSpeed){
-    //     if (snake[0].y === snake[snake.length -1].y && HORIZONTAL_SPEED === hSpeed && VERTICAL_SPEED === vSpeed){
-    //                     HORIZONTAL_SPEED = hSpeed;
-    //                     VERTICAL_SPEED = vSpeed;
-    //                     }
-    //                 else {
-    //                     HORIZONTAL_SPEED = -hSpeed;
-    //                     VERTICAL_SPEED = -vSpeed;
-    //                 }
-    //     };
-        
-    //     // Function who change the verticality
-    //     function changeDirectionY(hSpeed,vSpeed){
-    //     if (snake[0].y === snake[snake.length -1].y && HORIZONTAL_SPEED === hSpeed && VERTICAL_SPEED === vSpeed){
-    //                     HORIZONTAL_SPEED = hSpeed;
-    //                     VERTICAL_SPEED = vSpeed;
-    //                     }
-    //                 else {
-    //                     HORIZONTAL_SPEED = -hSpeed;
-    //                     VERTICAL_SPEED = vSpeed;
-    //                 }
-    //     };

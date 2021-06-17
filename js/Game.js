@@ -40,14 +40,14 @@ class Game {
         let self = this;
         let time = self.timeInterval;
         let snake = this.snake;
-        let input = this.input;
-        self.clearWindow();
         setTimeout(function onTick(time) {
             snake.updateMovement();
             if (snake.getOrientation() != 0) {
                 console.log(snake.getOrientation());
             }
+            self.clearWindow();
             snake.drawSnakeFullBody();
+            
             // Call ongoing again
             self.ongoing();
             }, time)

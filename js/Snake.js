@@ -38,11 +38,7 @@ class Snake {
         this.snakeController.bindControl(snakeInput.arrowUp, this.goUp);
         this.snakeController.bindControl(snakeInput.arrowRight, this.goRight);
         this.snakeController.bindControl(snakeInput.arrowDown, this.goDown);
-
         this.snakeController.bindControlDesktop(this);
-        
-
-        
     }
 
     // define the getters and setters
@@ -110,6 +106,7 @@ class Snake {
         this.getWindowContext().fillStyle = this.getInnerColor();
         this.getWindowContext().fillRect(part.x, part.y, this.width, this.height);
         this.getWindowContext().strokeRect(part.x, part.y, this.width, this.height);
+        this.clearTrail();
     }
     move(xSpeed,ySpeed) {
         // The unshift() method adds one or more elements to the beginning 
@@ -124,6 +121,14 @@ class Snake {
         this.getBody().pop();
         return this.getBody()[0]; 
     }
+    clearTrail() {
+        this.edgeColor = "#FFFFFF";
+        // Remove everything on the canvas window and reset it to white
+        this.getWindowContext().strokeStyle =  this.edgeColor;
+        this.getWindowContext().fillStyle = "#FFFFFF";
+        this.getWindowContext().fillRect(this.body[this.body.length-1].x,this.body[this.body.length-1].y,this.size,this.size);
+        this.getWindowContext().strokeRect(this.body[this.body.length-1].x,this.body[this.body.length-1].y,this.size,this.size);
+}
     updateMovement() {
         switch (this.orientation) {
             case snakeOrientation.left:
@@ -140,13 +145,11 @@ class Snake {
                 break;
         }
     }
-
     goLeft() {
         if (this.orientation != snakeOrientation.right ) {
             this.orientation = snakeOrientation.left;
         }
     }
-
     goUp() {
         if (this.orientation != snakeOrientation.down ) {
             this.orientation = snakeOrientation.up;
@@ -162,18 +165,15 @@ class Snake {
             this.orientation = snakeOrientation.down;
         }
     }
-
+    grow() {
+        if (this.body[0].x === this.body[this.body.length -1].x) {
+            this.body.push({x: this.body[this.body.length -1].x - 20, y:this.body[0].y});
+            }
+        else if (this.body[0].y === this.body[this.body.length -1].y) {
+            this.body.push({x:this.body[0].x, y: this.body[this.body.length -1].y - 20});
+        }
+        console.log(this.body);
+    }
 }
     
-        
     
-    // function snakeGrow() {
-    //     if (snake[0].x === snake[snake.length -1].x) {
-    //         snake.push({x: snake[snake.length -1].x - 20, y:snake[0].y});
-    //         clearCanvas(snake[snake.length -1].x - 20,snake[0].y,snakeWidth,snakeHeight);
-    //         }
-    //     else if (snake[0].y === snake[snake.length -1].y) {
-    //         snake.push({x:snake[0].x, y: snake[snake.length -1].y - 20});
-    //         clearCanvas(snake[0].x,snake[snake.length -1].y - 20,snakeWidth,snakeHeight);
-    //     }
-    // };

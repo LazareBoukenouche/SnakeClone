@@ -2,7 +2,7 @@ class Game {
     constructor(state,timeInterval) {
         this.state = state;
         this.timeInterval = timeInterval;
-        this.snake = new Snake(canvas.width/2,canvas.height/2,10,10,10,0.0005,snakeOrientation.left,"#000000","#00FF00",3);
+        this.snake = new Snake(canvas.width/2,canvas.height/2,10,10,10,0.0005,snakeOrientation.left,"#000000","#00AA00",3);
         // this.input = new Input("touchstart");
     }
 
@@ -41,11 +41,8 @@ class Game {
         let time = self.timeInterval;
         let snake = this.snake;
         setTimeout(function onTick(time) {
-            snake.updateMovement();
-            if (snake.getOrientation() != 0) {
-                console.log(snake.getOrientation());
-            }
             self.clearWindow();
+            snake.updateMovement();
             snake.drawSnakeFullBody();
             
             // Call ongoing again

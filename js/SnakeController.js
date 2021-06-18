@@ -5,6 +5,13 @@ const snakeInput = {
     "arrowDown": 3
 }
 
+const snakeInputDesktop = {
+    "ArrowLeft": 0,
+    "ArrowUp": 1,
+    "ArrowRight": 2,
+    "ArrowDown": 3
+}
+
 class SnakeController {
     constructor() {
         this.evt = "touchstart";
@@ -20,27 +27,21 @@ class SnakeController {
         switch (input) {
             case snakeInput.arrowLeft:
                 element = this.arrowLeft;
-                console.log('LEFT !');
                 break;
             case snakeInput.arrowUp:
                 element = this.arrowUp;
-                console.log('UP !');
                 break;
             case snakeInput.arrowRight:
                 element = this.arrowRight;
-                console.log('RIGHT !');
                 break;
             case snakeInput.arrowDown:
                 element = this.arrowDown;
-                console.log('DOWN !');
                 break;
         }
         if(element) {
             element.addEventListener("touchstart",snakeMethod,false);
             
         }
-        
-        
     }
 
     bindControlDesktop(target) {

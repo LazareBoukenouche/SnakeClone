@@ -72,18 +72,21 @@ class Game {
     // }
 
     checkWallCollision() {
-        console.log(this.snake.body[0].x);
-        if (this.snake.body[0].x < this.snake.size/2) {
-            this.snake.orientation = snakeOrientation.right;
+        if (this.snake.body[0].x < 0 && this.snake.orientation === snakeOrientation.left) {
+            // this.snake.orientation = snakeOrientation.right;
+            this.snake.body[0].x = this.getWindow().width - this.snake.size;
         }
-        if (this.snake.body[0].x === this.getWindow().width - this.snake.size) {
-            this.snake.orientation = snakeOrientation.left;
+        if (this.snake.body[0].x === this.getWindow().width && this.snake.orientation === snakeOrientation.right) {
+            // this.snake.orientation = snakeOrientation.left;
+            this.snake.body[0].x = 0;
         }
-        if (this.snake.body[0].y < this.snake.size/2) {
-            this.snake.orientation = snakeOrientation.down;
+        if (this.snake.body[0].y < 0 && this.snake.orientation === snakeOrientation.up) {
+            // this.snake.orientation = snakeOrientation.down;
+            this.snake.body[0].y = this.getWindow().height - this.snake.size;
         }
-        if (this.snake.body[0].y > this.getWindow().height - this.snake.size) {
-            this.snake.orientation = snakeOrientation.up;
+        if (this.snake.body[0].y > this.getWindow().height && this.snake.orientation === snakeOrientation.down) {
+            // this.snake.orientation = snakeOrientation.up;
+            this.snake.body[0].y = 0;
         }
     }
 

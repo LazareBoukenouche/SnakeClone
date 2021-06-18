@@ -43,30 +43,29 @@ class SnakeController {
         
     }
 
- // handleDesktopInputs() {
-    //         // // Creating keyboard events with the Char codes of the keyboard
-    //         document.onkeydown = function(e) {
-    //           e.preventDefault();
-    //           switch (e.keyCode) {
-    //           // Keyboard keys for changing the direction of the snake
-            
-    //               //Left arrow
-    //               case 37:
-    //                   snake.turn("left");
-    //                   break;
-    //               //Up arrow
-    //               case 38:
-    //                     snake.turn("up");
-    //                   break;
-    //               //Right arrow
-    //               case 39:
-    //                     snake.turn("right");
-    //                   break;
-    //               //Down arrow
-    //               case 40:
-    //                   snake.turn("down");
-    //                   break;
-    //           }
-    //         };
-    //     }
+    bindControlDesktop(target) {
+        // // Creating keyboard events with the Char codes of the keyboard
+        document.onkeydown = function(e) {
+        e.preventDefault();
+        switch (e.code) {
+        // Keyboard keys for changing the direction of the snake
+            //Left arrow
+            case 'ArrowLeft':
+                target.goLeft();
+                break;
+            //Up arrow
+            case 'ArrowUp':
+                target.goUp();
+                break;
+            //Right arrow
+            case 'ArrowRight':
+                target.goRight();
+                break;
+            //Down arrow
+            case 'ArrowDown':
+                target.goDown();
+                break;
+            }
+        };
+    }
 }

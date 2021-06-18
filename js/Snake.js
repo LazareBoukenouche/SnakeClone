@@ -38,6 +38,8 @@ class Snake {
         this.snakeController.bindControl(snakeInput.arrowUp, this.goUp);
         this.snakeController.bindControl(snakeInput.arrowRight, this.goRight);
         this.snakeController.bindControl(snakeInput.arrowDown, this.goDown);
+
+        this.snakeController.bindControlDesktop(this);
         
 
         
@@ -122,10 +124,6 @@ class Snake {
         this.getBody().pop();
         return this.getBody()[0]; 
     }
-    // turn(orientation) {
-    //     this.orientation = orientation;
-    //     return this.orientation;
-    // }
     updateMovement() {
         switch (this.orientation) {
             case snakeOrientation.left:
@@ -141,18 +139,6 @@ class Snake {
                 this.move(0,10);
                 break;
         }
-        // if (snake.orientation === "left") {
-        //         snake.move(-10,0);
-        //     }
-        //     else if (this.orientation === "up") {
-        //         snake.move(0,10);
-        //     }
-        //     else if (this.orientation === "right") {
-        //         snake.move(20,0);
-        //     }
-        //     else if (this.orientation === "down") {
-        //         snake.move(0,-20);
-        //     }
     }
 
     goLeft() {

@@ -102,8 +102,8 @@
           
           <script src="js/SnakeController.js"></script>
           <script src="js/Snake.js"></script>
-          <script src="js/Game.js"></script>
           <script src="js/Apple.js"></script>
+          <script src="js/Game.js"></script>
           <script src="js/SnakeGame.js"></script>
           
         </body>

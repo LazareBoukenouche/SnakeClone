@@ -2,8 +2,9 @@ class Game {
     constructor(state,timeInterval) {
         this.state = state;
         this.timeInterval = timeInterval;
-        this.snake = new Snake(canvas.width/2,canvas.height/2,10,10,10,0.0005,snakeOrientation.left,"#000000","#00AA00",3);
+        this.snake = new Snake(canvas.width/2,canvas.height/2,10,10,10,0.10,snakeOrientation.left,"#000000","#00AA00",3);
         // this.input = new Input("touchstart");
+        this.apple = new Apple(Math.floor((Math.random() * this.getWindow().height)),(Math.random() * this.getWindow().height));
     }
 
     getState() {
@@ -40,35 +41,36 @@ class Game {
         let self = this;
         let time = self.timeInterval;
         let snake = this.snake;
+        let apple = this.apple;
         setTimeout(function onTick(time) {
             self.clearWindow();
             self.checkWallCollision();
+            self.checkAppleCollision();
+            // self.checkSnakeBodyCollision();
             snake.updateMovement();
             snake.drawSnakeFullBody();
-            
+            apple.drawApple();
             // Call ongoing again
             self.ongoing();
             }, time)
     }
-    // checkAppleCollision() {
-    // 	if (snake[0].x < applePosX + appleWidth &&
-    //         snake[0].x + snakeWidth > applePosX &&
-    //         snake[0].y < applePosY + appleHeight &&
-    //         snakeHeight + snake[0].y > applePosY) {
-    // 		applePosX = Math.floor((Math.random() * canvas.height) + 20);
-    //         applePosY = Math.floor((Math.random() * canvas.width) + 20);
-    //         clearCanvas(applePosX,applePosY,20,20);
-    //         snakeGrow();
-    //     }
-    // };
+    checkAppleCollision() {
+    	if (this.snake.body[0].x < this.apple.x + this.apple.size &&
+            this.snake.body[0].x + this.snake.size > this.apple.x &&
+            this.snake.body[0].y < this.apple.y + this.apple.size &&
+            this.snake.size + this.snake.body[0].y > this.apple.y) {
+    		this.apple.spawn();
+            this.snake.grow();
+        }
+    };
 
     // checkSnakeBodyCollision() {
-    //     if (snake[0].x < snake[snake.length -1].x + snakeWidth &&
-    //         snake[0].x + snakeWidth > applePosX &&
-    //         snake[0].y < snake[snake.length -1].y + snakeHeight &&
-    //         snakeHeight + snake[0].y > snake[snake.length -1].y){
+    //     if (this.snake.body[0].x < this.snake.body[this.snake.body.length -1].x + this.snake.size &&
+    //         this.snake.body[0].x + this.snake.size > this.snake.size &&
+    //         this.snake.body[0].y < this.snake.body[this.snake.body.length -1].y + this.snake.size &&
+    //         this.snake.size + this.snake.body[0].y > this.snake.body[this.snake.body.length -1].y){
     //         alert(0);
-    //         }    
+    //     }    
     // }
 
     checkWallCollision() {

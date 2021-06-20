@@ -120,6 +120,12 @@
         width:5%;
     }
 }
-/* @media screen and (min-width: 1224px) { 
-
-} */
+@media screen and (min-width: 800px) { 
+    .controls {
+        display: none;
+    }
+    #canvas {
+        margin-left:5%;
+        margin-top: 2%;
+    }
+}

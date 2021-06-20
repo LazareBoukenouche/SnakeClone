@@ -2,8 +2,7 @@ class Game {
     constructor(state,timeInterval) {
         this.state = state;
         this.timeInterval = timeInterval;
-        this.snake = new Snake(canvas.width/2,canvas.height/2,10,10,10,0.10,snakeOrientation.left,"#000000","#00AA00",3);
-        // this.input = new Input("touchstart");
+        this.snake = new Snake(canvas.width/2,canvas.height/2,10,10,10,10,snakeOrientation.left,"#000000","#00AA00",3);
         this.apple = new Apple(Math.floor((Math.random() * this.getWindow().height)),(Math.random() * this.getWindow().height));
     }
 
@@ -15,13 +14,6 @@ class Game {
         this.state = newState;
     }
 
-    start() {
-        this.setState(gameState.ongoing);
-        // this.input.loadTouchEventsFunction();
-        // this.input.addTouchEvents();
-        // this.input.handleStart("touchstart");
-        this.ongoing();
-    }
     getWindow() {
         let canvas = document.getElementById('canvas');
         return canvas;

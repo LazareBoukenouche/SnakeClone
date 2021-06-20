@@ -132,16 +132,16 @@ class Snake {
     updateMovement() {
         switch (this.orientation) {
             case snakeOrientation.left:
-                this.move(-10,0);
+                this.move(-this.speed,0);
                 break;
             case snakeOrientation.up:
-                this.move(0,-10);
+                this.move(0,-this.speed);
                 break;
             case snakeOrientation.right:
-                this.move(10,0);
+                this.move(this.speed,0);
                 break;
             case snakeOrientation.down:
-                this.move(0,10);
+                this.move(0,this.speed);
                 break;
         }
     }

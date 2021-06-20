@@ -12,7 +12,7 @@ class SnakeGame {
         this.menuStartButton = document.querySelector('.play');
         this.startingCount = 1;
 
-        this.game = new Game(gameState.starting,200);
+        this.game = new Game(gameState.ongoing,350);
         // this.snake = new Snake(canvas.width/2,canvas.height/2,10,10,10,10,"left","#000000","#00FF00",3);
 
         //binding this to the method of the class
@@ -25,7 +25,7 @@ class SnakeGame {
         this.showControlsScreen = this.showControlsScreen.bind(this);
         this.hideControlsScreen = this.showControlsScreen.bind(this);
         this.start = this.start.bind(this);
-        this.launch();
+        this.checkGameState();
 
     }
 
@@ -61,14 +61,42 @@ class SnakeGame {
     hideControlsScreen() {
         document.querySelector(".controls").style.display = 'none';
     }
+    showGameOverScreen() {
+        console.log("game over !")
+    }
+    end() {
+        this.hideCanvas();
+        if (document.querySelector('.wrapper-canvas').clientWidth < 1200) {
+            this.hideControlsScreen();
+        }
+        this.showGameOverScreen();
+    }
 
     start() {
         this.startingCount = 0;
         this.hideMenu();
         this.showCanvas();
-        this.showControlsScreen();
-        this.game.start();
+        if (document.querySelector('.wrapper-canvas').clientWidth < 1200) {
+            this.showControlsScreen();
+        }
+        this.game.ongoing();
     }
+    checkGameState() {
+        console.log(this.game.state);
+        switch (this.game.state) {
+            case gameState.ongoing:
+                this.launch();
+                break;
+            case gameState.pausinf:
+                this.game.timeInterval = 0;
+                break;
+            case gameState.ending:
+                this.end();
+                break;
+        }
+    }
+       
+    
 }
 
 

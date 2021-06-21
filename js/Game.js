@@ -38,10 +38,14 @@ class Game {
             self.clearWindow();
             self.checkWallCollision();
             self.checkAppleCollision();
-            // self.checkSnakeBodyCollision();
             snake.updateMovement();
             snake.drawSnakeFullBody();
             apple.drawApple();
+            self.checkSnakeBodyCollision();
+            if (self.checkSnakeBodyCollision() === true) {
+                self.state = 3;
+                self.getState();
+            }
             // Call ongoing again
             self.ongoing();
             }, time)
@@ -64,6 +68,22 @@ class Game {
     //         alert(0);
     //     }    
     // }
+    checkSnakeBodyCollision() {
+        let hadCollided = false;
+        if (this.snake.touch > 2) {
+            hadCollided = true;
+        }
+        else {
+            hadCollided = false;
+        }
+        // console.log("head : ",this.snake.body[0].x ,this.snake.body[0].y);
+        for (let i = 1;i< this.snake.body.length;i++) {
+            if (this.snake.body[i].x === this.snake.body[0].x && this.snake.body[i].y === this.snake.body[0].y ) {
+                this.snake.touch+=1;
+            }
+        }
+        return hadCollided;
+    }
 
     checkWallCollision() {
         if (this.snake.body[0].x < 0 && this.snake.orientation === snakeOrientation.left) {

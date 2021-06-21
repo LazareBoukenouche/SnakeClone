@@ -1,6 +1,8 @@
 :root {
     --primary-color:#4eb1ba;
 }
+
+
 @media screen and (min-width: 350px) {
     body {
         margin: 0;
@@ -78,6 +80,10 @@
         border-radius: 50%; */
         
     }
+    .controls div:active {
+        background-color: #64dce7;
+        border:2px solid rgb(0, 0, 0);
+    }
     .controls div p {
         margin: 0;
         padding: 0;
@@ -85,10 +91,6 @@
         color: white;
         text-transform: uppercase;
     }
-
-
-    
-    
     #main ul {
         height: 100%;
         width: 95%;
@@ -120,6 +122,8 @@
         width:5%;
     }
 }
+
+
 @media screen and (min-width: 800px) { 
     .controls {
         display: none;

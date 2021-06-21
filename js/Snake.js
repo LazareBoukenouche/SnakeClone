@@ -23,6 +23,7 @@ class Snake {
             {x: this.x-this.size*2, y: this.y},
             {x: this.x-this.size*3, y: this.y},
             ];
+        this.touch = 0;
 
         this.drawBodyParts = this.drawBodyParts.bind(this);
         this.snakeController = new SnakeController();

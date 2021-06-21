@@ -79,15 +79,17 @@ class SnakeGame {
         if (document.querySelector('.wrapper-canvas').clientWidth < 1200) {
             this.showControlsScreen();
         }
+        this.checkGameState();
         this.game.ongoing();
+        this.checkGameState();
+        
     }
     checkGameState() {
-        console.log(this.game.state);
         switch (this.game.state) {
             case gameState.ongoing:
                 this.launch();
                 break;
-            case gameState.pausinf:
+            case gameState.pausing:
                 this.game.timeInterval = 0;
                 break;
             case gameState.ending:

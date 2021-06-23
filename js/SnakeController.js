@@ -44,29 +44,13 @@ class SnakeController {
         }
     }
 
-    bindControlDesktop(target) {
-        // // Creating keyboard events with the Char codes of the keyboard
-        document.onkeydown = function(e) {
-        e.preventDefault();
-        switch (e.code) {
-        // Keyboard keys for changing the direction of the snake
-            //Left arrow
-            case 'ArrowLeft':
-                target.goLeft();
-                break;
-            //Up arrow
-            case 'ArrowUp':
-                target.goUp();
-                break;
-            //Right arrow
-            case 'ArrowRight':
-                target.goRight();
-                break;
-            //Down arrow
-            case 'ArrowDown':
-                target.goDown();
-                break;
+    bindKeyControl(key, snakeMethod) 
+    {
+        document.addEventListener("keydown", function(input) {
+            if(input.code === key)
+            {
+                snakeMethod();
             }
-        };
+        });
     }
 }

@@ -39,7 +39,11 @@ class Snake {
         this.snakeController.bindControl(snakeInput.arrowUp, this.goUp);
         this.snakeController.bindControl(snakeInput.arrowRight, this.goRight);
         this.snakeController.bindControl(snakeInput.arrowDown, this.goDown);
-        this.snakeController.bindControlDesktop(this);
+        this.snakeController.bindKeyControl("ArrowLeft",this.goLeft);
+        this.snakeController.bindKeyControl("ArrowUp",this.goUp);
+        this.snakeController.bindKeyControl("ArrowRight",this.goRight);
+        this.snakeController.bindKeyControl("ArrowDown",this.goDown);
+        // this.snakeController.bindControlDesktop(this);
     }
 
     // define the getters and setters

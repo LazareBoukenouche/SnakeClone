@@ -129,7 +129,11 @@
         display: none;
     }
     #canvas {
-        margin-left:5%;
-        margin-top: 2%;
+        margin: 0;
+        margin-left: 5%;
+    }
+    #main ul {
+        margin-left: 2%;
+        margin-top: 0%;
     }
 }

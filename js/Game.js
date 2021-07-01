@@ -55,10 +55,13 @@ class Game {
             this.snake.body[0].x + this.snake.size > this.apple.x &&
             this.snake.body[0].y < this.apple.y + this.apple.size &&
             this.snake.size + this.snake.body[0].y > this.apple.y) {
-    		this.apple.spawn();
-            this.snake.grow();
+                this.apple.clearApple();
+    		    this.apple.spawn();
+                if (this.apple.spawn()) {
+                    this.snake.grow();
+                }
         }
-    };
+    }
 
     // checkSnakeBodyCollision() {
     //     if (this.snake.body[0].x < this.snake.body[this.snake.body.length -1].x + this.snake.size &&

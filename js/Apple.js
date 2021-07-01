@@ -2,7 +2,7 @@ class Apple {
     constructor(x,y) {
         this.x = x;
         this.y = y;
-        this.size = 5;
+        this.size = 10;
         this.color = "#FF0000";
     }
 
@@ -30,7 +30,7 @@ class Apple {
     drawApple() {
         // Check if the coord of the apple are in the canvas and draw the apple
         if (this.x >= 0 && this.x < this.getWindow().width && this.y >= 0 && this.y < this.getWindow().height) {
-            this.getWindowContext().strokeStyle = this.color;
+            this.getWindowContext().strokeStyle = "#FFFFFF";
             this.getWindowContext().fillStyle = this.color;
             this.getWindowContext().fillRect(this.x, this.y, this.size, this.size);
             this.getWindowContext().strokeRect(this.x, this.y, this.size, this.size);
@@ -41,8 +41,16 @@ class Apple {
             this.x = Math.floor((Math.random() * canvas.width) + 21);
         }
     }
+    clearApple() {
+        // Remove everything on the canvas window and reset it to white
+        this.getWindowContext().strokeStyle = "#FFFFFF";
+        this.getWindowContext().fillStyle = "#FFFFFF";
+        this.getWindowContext().fillRect(this.x,this.y,this.size,this.size);
+        this.getWindowContext().strokeRect(this.x,this.y,this.size,this.size);
+}
     spawn() {
         this.x = Math.floor((Math.random() * this.getWindow().width));
         this.y = Math.floor((Math.random() * this.getWindow().height));
+        return true;
     }
 }

@@ -126,6 +126,13 @@ class Snake {
         this.getBody().pop();
         return this.getBody()[0]; 
     }
+    clearPart(i) {
+        // Remove everything on the canvas window and reset it to white
+        this.getWindowContext().strokeStyle = "#FFFFFF";
+        this.getWindowContext().fillStyle = "#FFFFFF";
+        this.getWindowContext().fillRect(this.body[i].x,this.body[i].y,this.width,this.height);
+        this.getWindowContext().strokeRect(this.body[i].x,this.body[i].y,this.width,this.height);
+    }
     clearTrail() {
         this.edgeColor = "#FFFFFF";
         // Remove everything on the canvas window and reset it to white
@@ -133,7 +140,7 @@ class Snake {
         this.getWindowContext().fillStyle = "#FFFFFF";
         this.getWindowContext().fillRect(this.body[this.body.length-1].x,this.body[this.body.length-1].y,this.size,this.size);
         this.getWindowContext().strokeRect(this.body[this.body.length-1].x,this.body[this.body.length-1].y,this.size,this.size);
-}
+    }
     updateMovement() {
         switch (this.orientation) {
             case snakeOrientation.left:
@@ -151,22 +158,22 @@ class Snake {
         }
     }
     goLeft() {
-        if (this.orientation != snakeOrientation.right ) {
+        if (this.orientation != snakeOrientation.right  && this.body[0].y > 0 && this.body[0].y  < this.getWindow().height) {
             this.orientation = snakeOrientation.left;
         }
     }
     goUp() {
-        if (this.orientation != snakeOrientation.down ) {
+        if (this.orientation != snakeOrientation.down && this.body[0].x > 0 && this.body[0].x  < this.getWindow().width) {
             this.orientation = snakeOrientation.up;
         }
     }
     goRight() {
-        if (this.orientation != snakeOrientation.left ) {
+        if (this.orientation != snakeOrientation.left && this.body[0].y > 0 && this.body[0].y  < this.getWindow().height) {
             this.orientation = snakeOrientation.right;
         }
     }
     goDown() {
-        if (this.orientation != snakeOrientation.up ) {
+        if (this.orientation != snakeOrientation.up && this.body[0].x > 0 && this.body[0].x  < this.getWindow().width) {
             this.orientation = snakeOrientation.down;
         }
     }

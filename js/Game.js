@@ -63,14 +63,6 @@ class Game {
         }
     }
 
-    // checkSnakeBodyCollision() {
-    //     if (this.snake.body[0].x < this.snake.body[this.snake.body.length -1].x + this.snake.size &&
-    //         this.snake.body[0].x + this.snake.size > this.snake.size &&
-    //         this.snake.body[0].y < this.snake.body[this.snake.body.length -1].y + this.snake.size &&
-    //         this.snake.size + this.snake.body[0].y > this.snake.body[this.snake.body.length -1].y){
-    //         alert(0);
-    //     }    
-    // }
 
     checkSnakeBodyCollision() {
         let hadCollided = false;
@@ -80,7 +72,6 @@ class Game {
         else {
             hadCollided = false;
         }
-        // console.log("head : ",this.snake.body[0].x ,this.snake.body[0].y);
         for (let i = 1;i< this.snake.body.length;i++) {
             if (this.snake.body[i].x === this.snake.body[0].x && this.snake.body[i].y === this.snake.body[0].y ) {
                 this.snake.touch+=1;
@@ -121,29 +112,4 @@ class Game {
             })
         }
     }
-
-    // checkCollision() {
-    //     checkAppleCollision();
-    //     checkSnakeBodyCollision();
-    //     checkWallCollision();
-    // }
-    
-    // pause() {
-    //     this.setState(gameState.pausing);
-    //     if (HORIZONTAL_SPEED != 0 && VERTICAL_SPEED === 0 || HORIZONTAL_SPEED === 0 && VERTICAL_SPEED != 0){
-    //         HORIZONTAL_SPEED = 0;
-    //         VERTICAL_SPEED = 0;
-    //     }
-    // }
-
-    // end() {
-    //     this.setState(gameState.ending);
-    //     clearCanvas(0, 0,canvas.width,canvas.height);
-    //     setTimeout(function onTick(timeInterval) {
-    //     setColors("#000000", "#FFFFFF");
-    //     drawRect(canvas.width/4, canvas.height/5, 350,200);
-    //     // write('You lost !', 'Press R for reset');
-    //     end();
-    //     }, timeInterval)
-    // }
 }

@@ -34,6 +34,11 @@
         position: absolute;
     }
 
+    #game-over-screen {
+        display:none;
+        position: absolute;
+    }
+
     #canvas {
         margin: 5%;
         display: none;
@@ -107,7 +112,7 @@
         /* margin: 15%;  */
     }
 
-    #main ul li a ,#main ul li button{
+    #main ul li a ,#main ul li button, #game-over-screen ul li a,#game-over-screen h1{
         min-width:100%;
         min-height: 100%;
         font-size: 3rem;

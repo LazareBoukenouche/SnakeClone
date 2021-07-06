@@ -2,7 +2,8 @@ const gameState = {
     "starting": 0,
     "ongoing": 1,
     "pausing": 2,
-    "ending": 3
+    "ending": 3,
+    "reset":4
 };
 
 
@@ -10,6 +11,7 @@ class SnakeGame {
     constructor() {
 
         this.menuStartButton = document.querySelector('.play');
+        this.resetButton = document.querySelector(".reset");
         this.startingCount = 1;
 
         this.game = new Game(gameState.ongoing,350);
@@ -25,6 +27,7 @@ class SnakeGame {
         this.showControlsScreen = this.showControlsScreen.bind(this);
         this.hideControlsScreen = this.showControlsScreen.bind(this);
         this.start = this.start.bind(this);
+        // this.reset = this.reset.bind(this);
         this.checkGameState();
         
 
@@ -37,14 +40,13 @@ class SnakeGame {
     addClickEventToMenuStartButton() {
         this.menuStartButton.addEventListener('click',this.start);
     }
-
+    
     showMenu() {
         document.querySelector("#main").style.display = 'block';
     }
 
     hideMenu() {
         document.querySelector("#main").style.display = 'none';
-        return 0;
     }
 
     showCanvas() {
@@ -63,7 +65,11 @@ class SnakeGame {
         document.querySelector(".controls").style.display = 'none';
     }
     showGameOverScreen() {
-        console.log("game over !")
+        document.querySelector("#game-over-screen").style.display = "block";
+        this.resetButton.addEventListener('click',this.reset);
+    }
+    hideGameOverScreen() {
+        document.querySelector("#game-over-screen").style.display = "none";
     }
     end() {
         this.hideCanvas();
@@ -72,6 +78,17 @@ class SnakeGame {
         }
         this.showGameOverScreen();
     }
+
+    // reset() {
+    //     this.startingCount = 0;
+    //     this.hideMenu();
+    //     this.showCanvas();
+    //     this.hideGameOverScreen();
+    //     if (document.querySelector('.wrapper-canvas').clientWidth < 1200) {
+    //         this.showControlsScreen();
+    //     }
+    //     this.game.ongoing();
+    // }
 
     start() {
         this.startingCount = 0;
@@ -94,6 +111,9 @@ class SnakeGame {
             case gameState.ending:
                 this.end();
                 break;
+            // case gameState.reset:
+            //     this.reset();
+            //     break;
         }
     }
        

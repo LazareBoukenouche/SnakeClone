@@ -26,6 +26,7 @@ class SnakeGame {
         this.hideControlsScreen = this.showControlsScreen.bind(this);
         this.start = this.start.bind(this);
         this.checkGameState();
+        
 
     }
 
@@ -79,10 +80,8 @@ class SnakeGame {
         if (document.querySelector('.wrapper-canvas').clientWidth < 1200) {
             this.showControlsScreen();
         }
-        this.checkGameState();
         this.game.ongoing();
-        this.checkGameState();
-        
+
     }
     checkGameState() {
         switch (this.game.state) {

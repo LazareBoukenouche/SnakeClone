@@ -39,14 +39,13 @@ class Game {
             self.checkAppleCollision();
             self.checkWallCollision();
             snake.updateMovement();
-            console.log(snake.body[0].x);
             snake.drawSnakeFullBody();
             apple.drawApple();
-            self.checkSnakeBodyCollision();
             if (self.checkSnakeBodyCollision() === true) {
                 self.state = 3;
-                self.getState();
+                snakeGame.checkGameState();
             }
+            
             // Call ongoing again
             self.ongoing();
             }, time)
@@ -72,7 +71,7 @@ class Game {
     //         alert(0);
     //     }    
     // }
-    
+
     checkSnakeBodyCollision() {
         let hadCollided = false;
         if (this.snake.touch > 2) {

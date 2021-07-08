@@ -37,11 +37,12 @@ class Game {
         setTimeout(function onTick(time) {
             self.clearWindow();
             self.checkAppleCollision();
-            self.checkWallCollision();
             snake.updateMovement();
+            self.checkWallCollision();
+            
             snake.drawSnakeFullBody();
             apple.drawApple();
-            if (self.checkSnakeBodyCollision() === true) {
+            if (self.checkSnakeBodyCollision() === true || self.checkWallCollision()) {
                 self.state = 3;
                 snakeGame.checkGameState();
             }
@@ -81,35 +82,31 @@ class Game {
     }
 
     checkWallCollision() {
+        let hasCollided = false;
         if (this.snake.body[0].x < 0) {
-            // this.snake.orientation = snakeOrientation.right;
-            this.snake.body.forEach((part,i) => {
-                this.snake.clearPart(i);
-                part.x = this.getWindow().width;
-            })
-            
-            
+            // // this.snake.orientation = snakeOrientation.right;
+            // this.snake.body.forEach((part,i) => {
+            //     this.snake.clearPart(i);
+            //     part.x = this.getWindow().width;
+            // })
+            hasCollided = true;
         }
         if (this.snake.body[0].x > this.getWindow().width - this.snake.width && this.snake.orientation === snakeOrientation.right) {
             // this.snake.orientation = snakeOrientation.left;
-            this.snake.body.forEach((part,i) => {
-                this.snake.clearPart(i);
-                part.x = - this.snake.width;
-            })
+            // 
+            hasCollided = true;
         }
         if (this.snake.body[0].y < 0 && this.snake.orientation === snakeOrientation.up) {
             // this.snake.orientation = snakeOrientation.down;
-            this.snake.body.forEach((part,i) => {
-                this.snake.clearPart(i);
-                part.y = this.getWindow().height;
-            })
+            // 
+            hasCollided = true;
         }
         if (this.snake.body[0].y > this.getWindow().height && this.snake.orientation === snakeOrientation.down) {
             // this.snake.orientation = snakeOrientation.up;
-            this.snake.body.forEach((part,i) => {
-                this.snake.clearPart(i);
-                part.y = - this.snake.height;
-            })
+            // 
+            hasCollided = true;
         }
+        console.log(hasCollided);
+        return hasCollided;
     }
 }

@@ -65,7 +65,8 @@ class SnakeGame {
         document.querySelector(".controls").style.display = 'none';
     }
     showGameOverScreen() {
-        document.querySelector("#game-over-screen").style.display = "block";
+        document.querySelector("#game-over-screen").style.display = "flex";
+        document.querySelector(".controls").style.display = 'none';
         this.resetButton.addEventListener('click',this.reset);
     }
     hideGameOverScreen() {

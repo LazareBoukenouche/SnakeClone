@@ -49,8 +49,8 @@ class Apple {
         this.getWindowContext().strokeRect(this.x,this.y,this.size,this.size);
 }
     spawn() {
-        this.x = Math.floor((Math.random() * this.getWindow().width));
-        this.y = Math.floor((Math.random() * this.getWindow().height));
+        this.x = Math.floor((Math.random() * this.getWindow().width) - this.size);
+        this.y = Math.floor((Math.random() * this.getWindow().height) - this.size);
         return true;
     }
 }
